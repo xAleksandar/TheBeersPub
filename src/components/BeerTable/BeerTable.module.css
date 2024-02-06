@@ -1,0 +1,48 @@
+.table {
+  margin: 0 auto;
+  width: 80%;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0px;
+  }
+
+  .item {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 6px;
+    width: 400px;
+
+    .imageWrapper {
+      padding: 40px 20px;
+
+      .image {
+        height: 100px;
+        width: 50px;
+      }
+    }
+
+    .info {
+      width: 310px;
+
+      .favouritesButton {
+        padding: 8px 0px;
+        text-align: right;
+        width: 100%;
+      }
+
+      .infoTitle {
+        font-weight: bold;
+      }
+
+      .infoSubText {
+        margin-top: 10px;
+        height: 80px;
+        width: 264px;
+        font-size: 14px;
+        overflow: hidden;
+      }
+    }
+  }
+}

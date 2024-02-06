@@ -1,0 +1,26 @@
+.wrapperHeadbar {
+  background-color: #282c34;
+  justify-content: space-between;
+  display: flex;
+  padding: 10px;
+
+  .name {
+    color: white;
+    font-weight: 1000;
+    font-style: italic;
+    font-size: 2rem;
+  }
+
+  .options {
+    display: flex;
+
+    .option {
+      color: white;
+      display: flex;
+      margin: 6px;
+      font-size: 1.4rem;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}
