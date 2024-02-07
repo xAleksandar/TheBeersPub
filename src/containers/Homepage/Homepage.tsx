@@ -1,27 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeysEnum } from "../../lib/enums/queryKeysEnum";
 import { Searchbar, BeerTable } from "../../components";
-import { getAllBeers } from "../../lib/api/requests";
+import { getBeers } from "../../lib/api/requests";
+import { BeerType } from "../../lib/types";
 
 import styles from "./Homepage.module.css";
 
 const Homepage = () => {
-  const [beers, setBeers] = useState([]);
+  const queryClient = useQueryClient();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const results = await getAllBeers();
-      setBeers(results);
-    };
+  const { status, data } = useQuery<BeerType[], Error>({
+    queryKey: [queryKeysEnum.Beers, ""],
+    queryFn: async ({ queryKey }) => {
+      const [, name] = queryKey;
+      return getBeers(name as string);
+    },
+  });
 
-    fetchData();
-  }, []);
+  const onSearch = (name: string) => {
+    console.warn("Final Name: ", name);
+    queryClient.invalidateQueries({ queryKey: [queryKeysEnum.Beers, ""] });
+  };
 
   return (
     <>
-      <div className={styles.searchbar}>
-        <Searchbar />
-      </div>
-      <BeerTable beers={beers} />
+      {status === "pending" ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <div className={styles.searchbar}>
+            <Searchbar onSearch={onSearch} />
+          </div>
+          <BeerTable beers={data ?? []} />
+        </>
+      )}
     </>
   );
 };

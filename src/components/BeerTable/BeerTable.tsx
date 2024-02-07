@@ -6,7 +6,7 @@ import { ClickableImage } from "../";
 
 import useOpeningSound from "../../lib/sound";
 import emptyStar from "../../images/empty_star.svg";
-import fullStar from "../../images/solid_star.svg";
+// import fullStar from "../../images/solid_star.svg";
 
 import styles from "./BeerTable.module.css";
 
