@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { isFavourite, setFavourite } from "../../lib/favourites";
+import { timeEnum } from "../../lib/enums/timeEnum";
 import { RESULTS_PER_ROW } from "./constants";
 import { BeerType } from "../../lib/types";
+import { lang } from "../../lib/language";
 import { renderBeers } from "./helpers";
 import { ClickableImage } from "../";
 
 import useOpeningSound from "../../lib/sound";
 import emptyStar from "../../images/empty_star.svg";
-// import fullStar from "../../images/solid_star.svg";
+import fullStar from "../../images/solid_star.svg";
 
 import styles from "./BeerTable.module.css";
 
@@ -15,8 +18,19 @@ type Props = {
 };
 
 const BeerTable = (props: Props) => {
-  const playOpeningSound = useOpeningSound();
   const { beers } = props;
+  const playOpeningSound = useOpeningSound();
+  const [updatedItemIndex, setUpdatedItemIndex] = useState(-1);
+
+  const handleOnFavouriteClick = (id: number) => {
+    setFavourite(id, !isFavourite(id));
+    setUpdatedItemIndex(id);
+
+    const timeout = setTimeout(() => {
+      setUpdatedItemIndex(-1);
+      clearTimeout(timeout);
+    }, timeEnum.twoSeconds);
+  };
 
   return (
     <div className={styles.wrapperTable}>
@@ -37,11 +51,21 @@ const BeerTable = (props: Props) => {
                     />
                   </div>
                   <div className={styles.info}>
-                    <div className={styles.favouritesButton}>
+                    <div className={styles.favouritesArea}>
+                      {updatedItemIndex === beer.id && (
+                        <span className={styles.favouritesText}>
+                          {isFavourite(beer.id)
+                            ? lang.commonAddedToFavourites
+                            : lang.commonRemovedFromFavourites}
+                        </span>
+                      )}
                       <ClickableImage
-                        src={emptyStar}
-                        alt="Add to favourites"
-                        onClick={() => console.log("Add to favourites")}
+                        className={styles.favouritesButton}
+                        src={isFavourite(beer.id) ? fullStar : emptyStar}
+                        alt={lang.commonAddToFavourites}
+                        onClick={() => {
+                          handleOnFavouriteClick(beer.id);
+                        }}
                       />
                     </div>
                     <div className={styles.infoTitle}>{beer.name}</div>

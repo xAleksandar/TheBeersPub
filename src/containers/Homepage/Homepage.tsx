@@ -19,7 +19,6 @@ const Homepage = () => {
   });
 
   const onSearch = (name: string) => {
-    console.warn("Final Name: ", name);
     queryClient.invalidateQueries({ queryKey: [queryKeysEnum.Beers, ""] });
   };
 
