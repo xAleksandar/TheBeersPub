@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getAllBeers } from "../../lib/api/requests";
 import { BeerType } from "../../lib/types";
 import { ClickableImage } from "../";
+import useOpeningSound from "../../lib/sound";
 
 import emptyStar from "../../images/empty_star.svg";
 import fullStar from "../../images/solid_star.svg";
@@ -10,6 +11,7 @@ import styles from "./BeerTable.module.css";
 
 const BeerTable = () => {
   const RESULTS_PER_PAGE = 3;
+  const playOpeningSound = useOpeningSound();
   const [beers, setBeers] = useState([]);
 
   useEffect(() => {
@@ -40,7 +42,8 @@ const BeerTable = () => {
               {beerGroup.map((beer: BeerType) => (
                 <div key={beer.id} className={styles.item}>
                   <div className={styles.imageWrapper}>
-                    <img
+                    <ClickableImage
+                      onClick={playOpeningSound}
                       src={beer.image_url}
                       alt={beer.name}
                       className={styles.image}

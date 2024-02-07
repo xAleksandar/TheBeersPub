@@ -18,6 +18,7 @@
       padding: 40px 20px;
 
       .image {
+        cursor: pointer;
         height: 100px;
         width: 50px;
       }
