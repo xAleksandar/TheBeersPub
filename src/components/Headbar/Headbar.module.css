@@ -22,5 +22,9 @@
       align-items: center;
       cursor: pointer;
     }
+
+    .activeOption {
+      border-bottom: 1px solid white;
+    }
   }
 }
