@@ -1,22 +1,15 @@
-import React, { useEffect } from "react";
-import "./App.css";
-import { getAllBeers } from "./lib/api/requests";
-import { Headbar, BeerTable } from "./components";
+import React from "react";
+
+import { Headbar } from "./components";
+import { Homepage } from "./containers";
+
+import styles from "./App.module.css";
 
 function App() {
-  useEffect(() => {
-    const fetchData = async () => {
-      const results = await getAllBeers();
-      console.log(results);
-    };
-
-    fetchData();
-  }, []);
-
   return (
-    <div className="App">
+    <div className={styles.app}>
       <Headbar />
-      <BeerTable />
+      <Homepage />
     </div>
   );
 }

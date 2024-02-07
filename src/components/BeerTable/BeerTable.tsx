@@ -1,35 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { getAllBeers } from "../../lib/api/requests";
+import React from "react";
+import { RESULTS_PER_ROW } from "./constants";
 import { BeerType } from "../../lib/types";
+import { renderBeers } from "./helpers";
 import { ClickableImage } from "../";
-import useOpeningSound from "../../lib/sound";
 
+import useOpeningSound from "../../lib/sound";
 import emptyStar from "../../images/empty_star.svg";
 import fullStar from "../../images/solid_star.svg";
 
 import styles from "./BeerTable.module.css";
 
-const BeerTable = () => {
-  const RESULTS_PER_PAGE = 3;
+type Props = {
+  beers: BeerType[];
+};
+
+const BeerTable = (props: Props) => {
   const playOpeningSound = useOpeningSound();
-  const [beers, setBeers] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const results = await getAllBeers();
-      setBeers(results);
-    };
-
-    fetchData();
-  }, []);
-
-  const renderBeers = (array: BeerType[], size: number): BeerType[][] => {
-    const chunkedArray: BeerType[][] = [];
-    for (let i = 0; i < array.length; i += size) {
-      chunkedArray.push(array.slice(i, i + size));
-    }
-    return chunkedArray;
-  };
+  const { beers } = props;
 
   return (
     <div className={styles.wrapperTable}>
@@ -37,7 +24,7 @@ const BeerTable = () => {
         <div>Loading...</div>
       ) : (
         <div className={styles.table}>
-          {renderBeers(beers, RESULTS_PER_PAGE).map((beerGroup, rowIndex) => (
+          {renderBeers(beers, RESULTS_PER_ROW).map((beerGroup, rowIndex) => (
             <div key={rowIndex} className={styles.row}>
               {beerGroup.map((beer: BeerType) => (
                 <div key={beer.id} className={styles.item}>

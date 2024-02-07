@@ -2,4 +2,5 @@
 export default {
   commonHome: "Home",
   commonFavourites: "Favourites",
+  commonSearch: "Search",
 };
