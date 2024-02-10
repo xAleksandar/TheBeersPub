@@ -25,9 +25,11 @@ npm run dev
 
 # Screenshots
 
-1) Main Menu
+1) Default View
 ![Screenshot](screenshots/screenshot001.png)
 
-2) My-own Items Menu:
+2) Blockchain Mode, connect account
 ![Screenshot](screenshots/screenshot002.png)
 
+3) Data fetched from Ethereum Contract
+![Screenshot](screenshots/screenshot003.png)
