@@ -1,0 +1,15 @@
+.randomBeerBtn {
+  color: white;
+  background-color: #282c34;
+  border: none;
+  border-radius: 6px;
+  font-size: 28px;
+  padding: 8px 190px;
+}
+
+.randomBeer {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -26,5 +26,38 @@
     .activeOption {
       border-bottom: 1px solid white;
     }
+
+    .disabledOption {
+      color: gray;
+      cursor: not-allowed;
+    }
+  }
+
+  .selectorWrapper {
+    display: flex;
+    width: 360px;
+    justify-content: right;
+
+    .selector {
+      display: flex;
+      width: 260px;
+
+      .selectorText {
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        margin-right: 10px;
+        color: white;
+      }
+    }
+
+    .connectWalletBtn {
+      background-color: #354bc8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      padding: 0px 10px;
+    }
   }
 }

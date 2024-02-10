@@ -1,59 +1,18 @@
 .table {
   margin: 0 auto;
-  width: 1400px;
+  width: 1450px;
 
   .row {
     display: flex;
     margin: 40px 0px;
   }
+}
 
-  .item {
-    display: flex;
-    border: 1px solid black;
-    border-radius: 6px;
-    margin: 0px 40px;
-    width: 400px;
-
-    .imageWrapper {
-      padding: 40px 20px;
-
-      .image {
-        cursor: pointer;
-        height: 100px;
-        width: 50px;
-      }
-    }
-
-    .info {
-      width: 310px;
-
-      .favouritesArea {
-        padding: 8px 0px;
-        text-align: right;
-        width: 100%;
-
-        .favouritesText {
-          margin-left: 10px;
-          color: red;
-        }
-
-        .favouritesButton {
-          margin: 0px 10px;
-          cursor: pointer;
-        }
-      }
-
-      .infoTitle {
-        font-weight: bold;
-      }
-
-      .infoSubText {
-        margin-top: 10px;
-        height: 80px;
-        width: 264px;
-        font-size: 14px;
-        overflow: hidden;
-      }
-    }
-  }
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  height: 94vh;
+  color: #354bc8;
 }

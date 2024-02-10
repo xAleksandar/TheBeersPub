@@ -1,0 +1,30 @@
+.mintWrapper {
+  justify-content: center;
+  display: flex;
+  margin-top: 40px;
+
+  .inputs {
+    .input {
+      .inputField {
+        margin: 10px;
+        font-size: 20px;
+      }
+    }
+  }
+
+  .mintBtn {
+    margin: 0px auto;
+    margin: 10px;
+    font-size: 20px;
+    width: 276px;
+  }
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  height: 94vh;
+  color: #354bc8;
+}

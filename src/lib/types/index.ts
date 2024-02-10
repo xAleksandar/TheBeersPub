@@ -1,9 +1,10 @@
 export type BeerType = {
-  id: number;
-  name: string;
-  tagline: string;
-  first_brewed: string;
-  description: string;
-  image_url: string;
-  abv: number;
+  id?: number;
+  name?: string;
+  description?: string;
+  image_url?: string;
+  brewery?: string;
+  alcohol_percentage?: number;
+  beer_type?: string;
+  price?: number;
 };
