@@ -11,8 +11,10 @@ The objective of the project is to read data either from api or blockchain contr
 # To-Do List:
 1) Add unit tests.
 
-# Setup
+# Dependencies
+1. Node 20.0.0 or greater.
 
+# Setup
 1. Install packages
 ```bash
 npm install
